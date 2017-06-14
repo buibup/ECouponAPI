@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using ECouponAPI.ViewModels;
 using ECouponAPI.Models;
+using System.Linq;
 
 namespace ECouponAPI.Repository
 {
@@ -14,14 +12,24 @@ namespace ECouponAPI.Repository
         {
             _context = new EcouponBMCEntities();
         }
-        public List<CouponViewModels> GetCoupons(string memberId)
+
+        public List<COUPON> GetCoupons(int memberId)
         {
-            throw new NotImplementedException();
+            var items = _context.COUPONs.Where(c => c.MEMBER_ID == memberId).ToList();
+
+            if(items == null)
+            {
+                return new List<COUPON>();
+            }
+
+            return items;
         }
 
         public bool IsMember(string userName)
         {
-            throw new NotImplementedException();
+            var isMem = _context.MEMBERs.Any(m => m.USERNAME == userName);
+
+            return isMem;
         }
     }
 }

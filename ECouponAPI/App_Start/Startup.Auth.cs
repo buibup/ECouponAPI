@@ -3,9 +3,6 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace ECouponAPI
 {
@@ -34,6 +31,8 @@ namespace ECouponAPI
 
             // Enable the application to use bearer tokens to authenticate users
             app.UseOAuthBearerTokens(OAuthOptions);
+
+            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
         }
     }
 }

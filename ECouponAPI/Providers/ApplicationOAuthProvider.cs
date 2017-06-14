@@ -1,11 +1,12 @@
-﻿using Microsoft.Owin.Security;
+﻿using ECouponAPI.Models;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace ECouponAPI.Providers
 {
@@ -16,25 +17,19 @@ namespace ECouponAPI.Providers
 
         public ApplicationOAuthProvider(string publicClientId)
         {
-            if (publicClientId == null)
-            {
-                throw new ArgumentNullException("publicClientId");
-            }
-
-            _publicClientId = publicClientId;
+            _publicClientId = publicClientId ?? throw new ArgumentNullException("publicClientId");
         }
 
         public override async Task GrantResourceOwnerCredentials
         (OAuthGrantResourceOwnerCredentialsContext context)
         {
-            /*** Replace below user authentication code as per your Entity Framework Model ***
-            using (var obj = new UserDBEntities())
+            using (var obj = new EcouponBMCEntities())
             {
-                
-                tblUserMaster entry = obj.tblUserMasters.Where
-                <tblUserMaster>(record => 
-                record.User_ID == context.UserName && 
-                record.User_Password == context.Password).FirstOrDefault();
+
+                MEMBER entry = await obj.MEMBERs.Where
+                <MEMBER>(record =>
+                record.USERNAME == context.UserName &&
+                record.PASSWORD == context.Password).FirstOrDefaultAsync();
 
                 if (entry == null)
                 {
@@ -43,7 +38,6 @@ namespace ECouponAPI.Providers
                     return;
                 }                
             }
-            */
 
             // Add role
             ClaimsIdentity oAuthIdentity =

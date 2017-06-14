@@ -10,8 +10,7 @@
 namespace ECouponAPI.Models
 {
     using System;
-    using System.Collections.Generic;
-    
+
     public partial class COUPON
     {
         public int id { get; set; }
