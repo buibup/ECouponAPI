@@ -4,8 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fa5173af7f9f459cbca22c6f4aef7d24" Name="Diagram1">
-        <EntityTypeShape EntityType="EcouponBMCModel.USERACCOUNT" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="1c529b0ad7d444579489ca5ee4412815" Name="Diagram1">
+        <EntityTypeShape EntityType="EcouponBMCModel.COUPON" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcouponBMCModel.MEMBER" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

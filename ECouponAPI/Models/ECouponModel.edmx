@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EcouponBMCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="COUPON">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COUPONGROUPID" Type="int" Nullable="false" />
+          <Property Name="CODE" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="COUPONTYPECODE" Type="varchar" MaxLength="10" />
+          <Property Name="ORDER_ID" Type="int" />
+          <Property Name="PAYMENT_ID" Type="int" />
+          <Property Name="MEMBER_ID" Type="int" />
+          <Property Name="ADDRESS1" Type="nvarchar" MaxLength="150" />
+          <Property Name="ADDRESS2" Type="nvarchar" MaxLength="150" />
+          <Property Name="TELNO" Type="varchar" MaxLength="50" />
+          <Property Name="MOBILENO" Type="varchar" MaxLength="50" />
+          <Property Name="PACKAGE_CODE" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="PACKAGE_NAME" Type="nvarchar" MaxLength="200" />
+          <Property Name="CHECKLIST_TH" Type="nvarchar(max)" />
+          <Property Name="CHECKLIST_EN" Type="nvarchar(max)" />
+          <Property Name="TERMOFUSE_TH" Type="nvarchar(max)" />
+          <Property Name="TERMOFUSE_EN" Type="nvarchar(max)" />
+          <Property Name="DATE_PURCHASED" Type="datetime" />
+          <Property Name="QUANTITY" Type="int" />
+          <Property Name="PRICE" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DATE_EXPIRED" Type="datetime" />
+          <Property Name="GENERATED_DATE" Type="datetime" />
+          <Property Name="PRINTED_DATETIME" Type="datetime" />
+          <Property Name="PRINTED_BY" Type="varchar" MaxLength="50" />
+          <Property Name="PRINTED_TIMES" Type="int" />
+          <Property Name="USED_TIMES" Type="int" />
+          <Property Name="MAXUSAGETIME" Type="int" />
+          <Property Name="HN" Type="varchar" MaxLength="15" />
+          <Property Name="PATIENT_NAME" Type="nvarchar" MaxLength="200" />
+          <Property Name="PATIENT_LASTNAME" Type="nvarchar" MaxLength="200" />
+          <Property Name="PATIENT_GENDER" Type="varchar" MaxLength="1" />
+          <Property Name="STAFF_ID" Type="varchar" MaxLength="10" />
+          <Property Name="STAFF_NAME" Type="varchar" MaxLength="150" />
+          <Property Name="CHANNEL" Type="varchar" MaxLength="10" />
+          <Property Name="STATUS" Type="varchar" MaxLength="10" />
+          <Property Name="STATUS_REMARKS" Type="varchar" MaxLength="500" />
+          <Property Name="REFUND_METHOD" Type="varchar" MaxLength="10" />
+          <Property Name="CREATED_DATETIME" Type="datetime" />
+          <Property Name="CREATED_BY" Type="varchar" MaxLength="50" />
+          <Property Name="UPDATED_DATETIME" Type="datetime" />
+          <Property Name="UPDATED_BY" Type="varchar" MaxLength="50" />
+          <Property Name="DELETED" Type="bit" Nullable="false" />
+          <Property Name="ApplyDateTime" Type="datetime" />
+          <Property Name="REFUND_AMOUNT" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RefundOtherMethod" Type="varchar" MaxLength="500" />
+          <Property Name="EVENTCODE" Type="nvarchar" MaxLength="50" />
+          <Property Name="EVENTNAME" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="MEMBER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberNo" Type="int" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="nvarchar" MaxLength="250" />
+          <Property Name="MIDDLENAME" Type="nvarchar" MaxLength="250" />
+          <Property Name="LASTNAME" Type="nvarchar" MaxLength="250" />
+          <Property Name="PERSONAL_ID" Type="varchar" MaxLength="13" />
+          <Property Name="PASSPORT_ID" Type="varchar" MaxLength="13" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="HOME_TELNO" Type="nvarchar" MaxLength="50" />
+          <Property Name="MOBILENO" Type="nvarchar" MaxLength="50" />
+          <Property Name="ADDRESS1" Type="nvarchar" MaxLength="150" />
+          <Property Name="ADDRESS2" Type="nvarchar" MaxLength="150" />
+          <Property Name="POSTCODE" Type="nvarchar" MaxLength="10" />
+          <Property Name="BILLINGNAME" Type="nvarchar" MaxLength="150" />
+          <Property Name="BILLING_ADDRESS1" Type="nvarchar" MaxLength="150" />
+          <Property Name="BILLING_ADDRESS2" Type="nvarchar" MaxLength="150" />
+          <Property Name="BILLING_POSTCODE" Type="nvarchar" MaxLength="10" />
+          <Property Name="REMARKS" Type="varchar" MaxLength="1000" />
+          <Property Name="ENABLED" Type="bit" />
+          <Property Name="CREATED_DATETIME" Type="datetime" />
+          <Property Name="CREATED_BY" Type="varchar" MaxLength="20" />
+          <Property Name="UPDATED_DATETIME" Type="datetime" />
+          <Property Name="UPDATED_BY" Type="varchar" MaxLength="20" />
+          <Property Name="GENDER" Type="char" MaxLength="1" />
+          <Property Name="DELETED" Type="bit" Nullable="false" />
+          <Property Name="CHANNEL" Type="varchar" MaxLength="500" />
+          <Property Name="StatusRemark" Type="varchar" MaxLength="1000" />
+          <Property Name="PreferLangCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="CONFIRMED" Type="bit" />
+          <Property Name="CONFIRMCODE" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="EcouponBMCModelStoreContainer">
+          <EntitySet Name="COUPON" EntityType="Self.COUPON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEMBER" EntityType="Self.MEMBER" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EcouponBMCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="COUPON">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COUPONGROUPID" Type="Int32" Nullable="false" />
+          <Property Name="CODE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COUPONTYPECODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ORDER_ID" Type="Int32" />
+          <Property Name="PAYMENT_ID" Type="Int32" />
+          <Property Name="MEMBER_ID" Type="Int32" />
+          <Property Name="ADDRESS1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="TELNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MOBILENO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PACKAGE_CODE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PACKAGE_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CHECKLIST_TH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CHECKLIST_EN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TERMOFUSE_TH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TERMOFUSE_EN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DATE_PURCHASED" Type="DateTime" Precision="3" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="PRICE" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DATE_EXPIRED" Type="DateTime" Precision="3" />
+          <Property Name="GENERATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="PRINTED_DATETIME" Type="DateTime" Precision="3" />
+          <Property Name="PRINTED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PRINTED_TIMES" Type="Int32" />
+          <Property Name="USED_TIMES" Type="Int32" />
+          <Property Name="MAXUSAGETIME" Type="Int32" />
+          <Property Name="HN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PATIENT_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PATIENT_LASTNAME" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PATIENT_GENDER" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="STAFF_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="STAFF_NAME" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CHANNEL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="STATUS_REMARKS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="REFUND_METHOD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_DATETIME" Type="DateTime" Precision="3" />
+          <Property Name="CREATED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATED_DATETIME" Type="DateTime" Precision="3" />
+          <Property Name="UPDATED_BY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DELETED" Type="Boolean" Nullable="false" />
+          <Property Name="ApplyDateTime" Type="DateTime" Precision="3" />
+          <Property Name="REFUND_AMOUNT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RefundOtherMethod" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EVENTCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EVENTNAME" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MEMBER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberNo" Type="Int32" />
+          <Property Name="USERNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MIDDLENAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="LASTNAME" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PERSONAL_ID" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="PASSPORT_ID" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="HOME_TELNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MOBILENO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="POSTCODE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BILLINGNAME" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="BILLING_ADDRESS1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="BILLING_ADDRESS2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="BILLING_POSTCODE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="REMARKS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ENABLED" Type="Boolean" />
+          <Property Name="CREATED_DATETIME" Type="DateTime" Precision="3" />
+          <Property Name="CREATED_BY" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATED_DATETIME" Type="DateTime" Precision="3" />
+          <Property Name="UPDATED_BY" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GENDER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="DELETED" Type="Boolean" Nullable="false" />
+          <Property Name="CHANNEL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="StatusRemark" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="PreferLangCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CONFIRMED" Type="Boolean" />
+          <Property Name="CONFIRMCODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="EcouponBMCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="COUPONs" EntityType="Self.COUPON" />
+          <EntitySet Name="MEMBERs" EntityType="Self.MEMBER" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EcouponBMCModelStoreContainer" CdmEntityContainer="EcouponBMCEntities">
+          <EntitySetMapping Name="COUPONs">
+            <EntityTypeMapping TypeName="EcouponBMCModel.COUPON">
+              <MappingFragment StoreEntitySet="COUPON">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="COUPONGROUPID" ColumnName="COUPONGROUPID" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="COUPONTYPECODE" ColumnName="COUPONTYPECODE" />
+                <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+                <ScalarProperty Name="PAYMENT_ID" ColumnName="PAYMENT_ID" />
+                <ScalarProperty Name="MEMBER_ID" ColumnName="MEMBER_ID" />
+                <ScalarProperty Name="ADDRESS1" ColumnName="ADDRESS1" />
+                <ScalarProperty Name="ADDRESS2" ColumnName="ADDRESS2" />
+                <ScalarProperty Name="TELNO" ColumnName="TELNO" />
+                <ScalarProperty Name="MOBILENO" ColumnName="MOBILENO" />
+                <ScalarProperty Name="PACKAGE_CODE" ColumnName="PACKAGE_CODE" />
+                <ScalarProperty Name="PACKAGE_NAME" ColumnName="PACKAGE_NAME" />
+                <ScalarProperty Name="CHECKLIST_TH" ColumnName="CHECKLIST_TH" />
+                <ScalarProperty Name="CHECKLIST_EN" ColumnName="CHECKLIST_EN" />
+                <ScalarProperty Name="TERMOFUSE_TH" ColumnName="TERMOFUSE_TH" />
+                <ScalarProperty Name="TERMOFUSE_EN" ColumnName="TERMOFUSE_EN" />
+                <ScalarProperty Name="DATE_PURCHASED" ColumnName="DATE_PURCHASED" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="DATE_EXPIRED" ColumnName="DATE_EXPIRED" />
+                <ScalarProperty Name="GENERATED_DATE" ColumnName="GENERATED_DATE" />
+                <ScalarProperty Name="PRINTED_DATETIME" ColumnName="PRINTED_DATETIME" />
+                <ScalarProperty Name="PRINTED_BY" ColumnName="PRINTED_BY" />
+                <ScalarProperty Name="PRINTED_TIMES" ColumnName="PRINTED_TIMES" />
+                <ScalarProperty Name="USED_TIMES" ColumnName="USED_TIMES" />
+                <ScalarProperty Name="MAXUSAGETIME" ColumnName="MAXUSAGETIME" />
+                <ScalarProperty Name="HN" ColumnName="HN" />
+                <ScalarProperty Name="PATIENT_NAME" ColumnName="PATIENT_NAME" />
+                <ScalarProperty Name="PATIENT_LASTNAME" ColumnName="PATIENT_LASTNAME" />
+                <ScalarProperty Name="PATIENT_GENDER" ColumnName="PATIENT_GENDER" />
+                <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+                <ScalarProperty Name="STAFF_NAME" ColumnName="STAFF_NAME" />
+                <ScalarProperty Name="CHANNEL" ColumnName="CHANNEL" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="STATUS_REMARKS" ColumnName="STATUS_REMARKS" />
+                <ScalarProperty Name="REFUND_METHOD" ColumnName="REFUND_METHOD" />
+                <ScalarProperty Name="CREATED_DATETIME" ColumnName="CREATED_DATETIME" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="UPDATED_DATETIME" ColumnName="UPDATED_DATETIME" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+                <ScalarProperty Name="ApplyDateTime" ColumnName="ApplyDateTime" />
+                <ScalarProperty Name="REFUND_AMOUNT" ColumnName="REFUND_AMOUNT" />
+                <ScalarProperty Name="RefundOtherMethod" ColumnName="RefundOtherMethod" />
+                <ScalarProperty Name="EVENTCODE" ColumnName="EVENTCODE" />
+                <ScalarProperty Name="EVENTNAME" ColumnName="EVENTNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEMBERs">
+            <EntityTypeMapping TypeName="EcouponBMCModel.MEMBER">
+              <MappingFragment StoreEntitySet="MEMBER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MemberNo" ColumnName="MemberNo" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+                <ScalarProperty Name="MIDDLENAME" ColumnName="MIDDLENAME" />
+                <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+                <ScalarProperty Name="PERSONAL_ID" ColumnName="PERSONAL_ID" />
+                <ScalarProperty Name="PASSPORT_ID" ColumnName="PASSPORT_ID" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="HOME_TELNO" ColumnName="HOME_TELNO" />
+                <ScalarProperty Name="MOBILENO" ColumnName="MOBILENO" />
+                <ScalarProperty Name="ADDRESS1" ColumnName="ADDRESS1" />
+                <ScalarProperty Name="ADDRESS2" ColumnName="ADDRESS2" />
+                <ScalarProperty Name="POSTCODE" ColumnName="POSTCODE" />
+                <ScalarProperty Name="BILLINGNAME" ColumnName="BILLINGNAME" />
+                <ScalarProperty Name="BILLING_ADDRESS1" ColumnName="BILLING_ADDRESS1" />
+                <ScalarProperty Name="BILLING_ADDRESS2" ColumnName="BILLING_ADDRESS2" />
+                <ScalarProperty Name="BILLING_POSTCODE" ColumnName="BILLING_POSTCODE" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="ENABLED" ColumnName="ENABLED" />
+                <ScalarProperty Name="CREATED_DATETIME" ColumnName="CREATED_DATETIME" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="UPDATED_DATETIME" ColumnName="UPDATED_DATETIME" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="DELETED" ColumnName="DELETED" />
+                <ScalarProperty Name="CHANNEL" ColumnName="CHANNEL" />
+                <ScalarProperty Name="StatusRemark" ColumnName="StatusRemark" />
+                <ScalarProperty Name="PreferLangCode" ColumnName="PreferLangCode" />
+                <ScalarProperty Name="CONFIRMED" ColumnName="CONFIRMED" />
+                <ScalarProperty Name="CONFIRMCODE" ColumnName="CONFIRMCODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -25,6 +25,7 @@ namespace ECouponAPI.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<USERACCOUNT> USERACCOUNTs { get; set; }
+        public virtual DbSet<COUPON> COUPONs { get; set; }
+        public virtual DbSet<MEMBER> MEMBERs { get; set; }
     }
 }

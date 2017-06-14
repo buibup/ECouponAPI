@@ -35,6 +35,5 @@ namespace ECouponAPI
             // Enable the application to use bearer tokens to authenticate users
             app.UseOAuthBearerTokens(OAuthOptions);
         }
-
     }
 }

@@ -1,5 +1,4 @@
-﻿using ECouponAPI.Models;
-using Microsoft.Owin.Security;
+﻿using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using System;
 using System.Collections.Generic;
@@ -12,6 +11,7 @@ namespace ECouponAPI.Providers
 {
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
+
         private readonly string _publicClientId;
 
         public ApplicationOAuthProvider(string publicClientId)
@@ -27,14 +27,14 @@ namespace ECouponAPI.Providers
         public override async Task GrantResourceOwnerCredentials
         (OAuthGrantResourceOwnerCredentialsContext context)
         {
-            
-            using (var obj = new EcouponBMCEntities())
+            /*** Replace below user authentication code as per your Entity Framework Model ***
+            using (var obj = new UserDBEntities())
             {
                 
-                USERACCOUNT entry = obj.USERACCOUNTs.Where
-                <USERACCOUNT>(record => 
-                record.USERNAME == context.UserName && 
-                record.PASSWORD == context.Password).FirstOrDefault();
+                tblUserMaster entry = obj.tblUserMasters.Where
+                <tblUserMaster>(record => 
+                record.User_ID == context.UserName && 
+                record.User_Password == context.Password).FirstOrDefault();
 
                 if (entry == null)
                 {
@@ -43,9 +43,14 @@ namespace ECouponAPI.Providers
                     return;
                 }                
             }
+            */
 
+            // Add role
             ClaimsIdentity oAuthIdentity =
             new ClaimsIdentity(context.Options.AuthenticationType);
+            oAuthIdentity.AddClaim(new Claim(ClaimTypes.Role, "1"));
+
+
             ClaimsIdentity cookiesIdentity =
             new ClaimsIdentity(context.Options.AuthenticationType);
 
@@ -54,6 +59,7 @@ namespace ECouponAPI.Providers
             new AuthenticationTicket(oAuthIdentity, properties);
             context.Validated(ticket);
             context.Request.Context.Authentication.SignIn(cookiesIdentity);
+
         }
 
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
@@ -104,5 +110,6 @@ namespace ECouponAPI.Providers
             };
             return new AuthenticationProperties(data);
         }
+
     }
 }

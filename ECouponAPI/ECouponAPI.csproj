@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9FB1D7A5-7854-495F-A1FB-64B7A72F6276}</ProjectGuid>
+    <ProjectGuid>{48D88E76-1B31-4AB5-8063-21479009362A}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -207,35 +207,38 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\User.Context.cs">
+    <Compile Include="Models\COUPON.cs">
+      <DependentUpon>ECouponModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ECouponModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>User.Context.tt</DependentUpon>
+      <DependentUpon>ECouponModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\User.cs">
+    <Compile Include="Models\ECouponModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>User.tt</DependentUpon>
+      <DependentUpon>ECouponModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\User.Designer.cs">
+    <Compile Include="Models\ECouponModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>User.edmx</DependentUpon>
+      <DependentUpon>ECouponModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\USERACCOUNT.cs">
-      <DependentUpon>User.tt</DependentUpon>
+    <Compile Include="Models\MEMBER.cs">
+      <DependentUpon>ECouponModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
-    <Compile Include="Repository\IUser.cs" />
-    <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Repository\ECouponRepository.cs" />
+    <Compile Include="Repository\IECouponRepository.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CouponViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -246,16 +249,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\User.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>User.Context.cs</LastGenOutput>
-      <DependentUpon>User.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\User.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>User.edmx</DependentUpon>
-      <LastGenOutput>User.cs</LastGenOutput>
-    </Content>
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
@@ -278,13 +271,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\User.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>User.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\User.edmx.diagram">
-      <DependentUpon>User.edmx</DependentUpon>
-    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -293,9 +279,26 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <EntityDeploy Include="Models\ECouponModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ECouponModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ECouponModel.edmx.diagram">
+      <DependentUpon>ECouponModel.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Models\ECouponModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ECouponModel.Context.cs</LastGenOutput>
+      <DependentUpon>ECouponModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ECouponModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ECouponModel.edmx</DependentUpon>
+      <LastGenOutput>ECouponModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
@@ -327,13 +330,13 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -351,9 +354,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51280</DevelopmentServerPort>
+          <DevelopmentServerPort>22090</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51280/</IISUrl>
+          <IISUrl>http://localhost:22090/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
